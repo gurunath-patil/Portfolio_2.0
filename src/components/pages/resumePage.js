@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import TitleBar from '../title-txt'
 import './pages-style.css'
 import {
@@ -9,78 +9,10 @@ import {
 	TimelineDot,
 } from '@mui/lab'
 import TimelineItem, { timelineItemClasses } from '@mui/lab/TimelineItem'
-import { Button, createTheme } from '@mui/material'
+import { Button, CircularProgress, createTheme } from '@mui/material'
+const TechStackCardPreview = lazy(() => import("./techStackCard"))
 
 export default function ResumePage() {
-	const techStackData = [
-		{
-			LogoURL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg',
-			name: 'HTML5',
-		},
-		{
-			LogoURL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg',
-			name: 'CSS3',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg',
-			name: 'JavaScript',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg',
-			name: 'TypeScript',
-		},
-		{
-			LogoURL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original.svg',
-			name: 'React JS',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/angular/angular-original.svg',
-			name: 'Angular',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg',
-			name: 'Node Js',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg',
-			name: 'Express JS',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
-			name: 'Boostrap',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg',
-			name: 'Tailwind',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/azuresqldatabase/azuresqldatabase-original.svg',
-			name: 'SQL Server',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg',
-			name: 'MongoDb',
-		},
-		{
-			LogoURL: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/redux/redux-original.svg',
-			name: 'Redux',
-		},
-		{
-			LogoURL:
-				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
-			name: 'Python',
-		},
-	]
-
 	const experinceArr = [
 		{
 			companyName: 'Compserv Private LTD, Kolhapur',
@@ -91,24 +23,24 @@ export default function ResumePage() {
 
 	const educationArr = [
 		{
-			collegeName:'D Y Patil Agriculture & Technical College, Kolhapur',
-			course:"Master's Of Computer Application (MCA)",
-			date:'Jun 2022 - Jun 2024'
+			collegeName: 'D Y Patil Agriculture & Technical College, Kolhapur',
+			course: "Master's Of Computer Application (MCA)",
+			date: 'Jun 2022 - Jun 2024',
 		},
 		{
-			collegeName:'Shivaji University, Kolhapur',
-			course:"Bachelor's Of Computer Science (BCS)",
-			date:'Jun 2019 - Jun 2022'
+			collegeName: 'Shivaji University, Kolhapur',
+			course: "Bachelor's Of Computer Science (BCS)",
+			date: 'Jun 2019 - Jun 2022',
 		},
 		{
-			collegeName:'Private High School & Jr. College, Kolhapur',
-			course:"HSC (12th)",
-			date:'Jun 2017 - Jun 2019'
+			collegeName: 'Private High School & Jr. College, Kolhapur',
+			course: 'HSC (12th)',
+			date: 'Jun 2017 - Jun 2019',
 		},
 		{
-			collegeName:'Shahu Public School, Kolhapur',
-			course:"SSC (10th)",
-			date:'Jun 2016 - Jun 2017'
+			collegeName: 'Shahu Public School, Kolhapur',
+			course: 'SSC (10th)',
+			date: 'Jun 2016 - Jun 2017',
 		},
 	]
 	return (
@@ -129,9 +61,12 @@ export default function ResumePage() {
 				<div
 					className='h-64 overflow-y-scroll w-full p-2 grid grid-cols-2 md:grid-cols-3 md:gap-y-7 lg:grid-cols-4 gap-x-5 gap-y-10 scroll-bar-style'
 					id='techStack-card-container'>
-					{techStackData.map((item,index) => {
+					{/* {techStackData.map((item, index) => {
 						return <TechStackCard key={index} cardData={item} />
-					})}
+					})} */}
+					<Suspense fallback={<CircularProgress/>}>
+						<TechStackCardPreview />
+					</Suspense>
 				</div>
 			</div>
 			{/* technical skill section end */}
@@ -156,12 +91,13 @@ export default function ResumePage() {
 									padding: 0,
 								},
 							}}>
-							{experinceArr.map((item,index) => {
+							{experinceArr.map((item, index) => {
 								return (
 									<TimelineItem sx={{ width: '100%', paddingLeft: '1rem' }} key={index}>
 										<TimelineSeparator>
 											<TimelineDot color='success' />
-											{/* <TimelineConnector /> */}   {/* commentout when more then one companys you have */}  
+											{/* <TimelineConnector /> */}{' '}
+											{/* commentout when more then one companys you have */}
 										</TimelineSeparator>
 										<TimelineContent>
 											{item.companyName}
@@ -190,17 +126,17 @@ export default function ResumePage() {
 					</div>
 					<div className='overflow-scroll overflow-x-hidden h-52 md:h-96 lg:h-52 scroll-bar-style'>
 						<Timeline>
-							{educationArr.map((item,index) =>{
-								return(
+							{educationArr.map((item, index) => {
+								return (
 									<TimelineItem position='alternate' key={index}>
 										<TimelineSeparator>
-											<TimelineDot color='warning'/>
-											<TimelineConnector/>
+											<TimelineDot color='warning' />
+											<TimelineConnector />
 										</TimelineSeparator>
 										<TimelineContent>
 											<span className='education-txt'>{item.course}</span>
 											<br />
-										<span className='text-neutral-300 education-txt'>{item.collegeName}</span>
+											<span className='text-neutral-300 education-txt'>{item.collegeName}</span>
 											<br />
 											<span className='text-neutral-400 education-txt'>{item.date}</span>
 										</TimelineContent>
@@ -212,24 +148,6 @@ export default function ResumePage() {
 				</div>
 			</div>
 		</section>
-	)
-}
-
-function TechStackCard(prop) {
-	const { LogoURL, name } = prop.cardData
-
-	return (
-		<div className='card'>
-			<div className='wave'></div>
-			<div className='wave'></div>
-			<div className='wave'></div>
-			<div className='content'>
-				<div>
-					<img src={LogoURL} alt='logo' className='languages-card-img'/>
-				</div>
-				<span className='text-stone-300 hover:text-lime-300 text-sm md:text-xl lg:text-xl font-bold'>{name}</span>
-			</div>
-		</div>
 	)
 }
 
