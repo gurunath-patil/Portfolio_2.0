@@ -71,6 +71,8 @@ export default function TechStackCard() {
 			name: 'Python',
 		},
 	]
+
+    
 	return (
 		<>
 			{techStackData &&
