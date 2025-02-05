@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './pages-style.css'
 import TitleBar from '../title-txt'
-import { Button, Card, CardContent, CardMedia, Divider, Typography } from '@mui/material'
+import { Button, Card, CardContent, CardMedia, Divider, Skeleton, Typography } from '@mui/material'
 
 export default function PortfolioPage() {
 	const projectDetails = [
@@ -39,16 +39,36 @@ export default function PortfolioPage() {
 				'https://images.pexels.com/photos/7289717/pexels-photo-7289717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
 		},
 	]
-	return (
-		<section className='px-10 py-7 text-white'>
-			<TitleBar titleTxt={'Portfolio'} />
-			<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 mt-10'>
-				{projectDetails.map((item,index) => {
-					return <ProjectCard data={item} key={index} />
-				})}
-			</div>
-		</section>
-	)
+
+	const [timerFlag, setTimerFlag] = useState(true)
+	useEffect(() => {
+		setTimeout(() => {
+			setTimerFlag(false)
+		}, 4000)
+	}, [])
+	if (timerFlag == true) {
+		return (
+			<section className='px-10 py-7 text-white'>
+				<TitleBar titleTxt={'Portfolio'} />
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 mt-10'>
+					{projectDetails.map((item, index) => {
+						return <Skeleton sx={{backgroundColor:'#1E3E62'}} animation='wave' variant='rounded' width={280} height={250} />
+					})}
+				</div>
+			</section>
+		)
+	} else {
+		return (
+			<section className='px-10 py-7 text-white'>
+				<TitleBar titleTxt={'Portfolio'} />
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 mt-10'>
+					{projectDetails.map((item, index) => {
+						return <ProjectCard data={item} key={index} />
+					})}
+				</div>
+			</section>
+		)
+	}
 }
 
 function ProjectCard(prop) {
@@ -56,7 +76,14 @@ function ProjectCard(prop) {
 	return (
 		<Card sx={{ maxWidth: 280 }}>
 			<CardMedia sx={{ height: 126 }} image={imgURL} title='nandai dairy' component='img' />
-			<CardContent sx={{ display: 'flex',flexDirection:'column',gap:'2px', justifyContent:'start',alignItems:'start'}}>
+			<CardContent
+				sx={{
+					display: 'flex',
+					flexDirection: 'column',
+					gap: '2px',
+					justifyContent: 'start',
+					alignItems: 'start',
+				}}>
 				<Typography variant='h5' component='div'>
 					{projectName}
 				</Typography>
@@ -73,5 +100,3 @@ function ProjectCard(prop) {
 		</Card>
 	)
 }
-
-
