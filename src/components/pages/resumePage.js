@@ -15,6 +15,11 @@ const TechStackCardPreview = lazy(() => import("./techStackCard"))
 export default function ResumePage() {
 	const experinceArr = [
 		{
+			companyName: 'Incrust Software Pvt. Ltd, Pune',
+			date: 'Feb 2025 - Present',
+			role: 'Full Stack Developer',
+		},
+		{
 			companyName: 'Compserv Private LTD, Kolhapur',
 			date: 'Sep 2023 - Sep 2024',
 			role: 'Full Stack Developer Intern',
@@ -95,14 +100,14 @@ export default function ResumePage() {
 								return (
 									<TimelineItem sx={{ width: '100%', paddingLeft: '1rem' }} key={index}>
 										<TimelineSeparator>
-											<TimelineDot color='success' />
+											<TimelineDot color={index === 0 ? 'success' : 'error'} />
 											{/* <TimelineConnector /> */}{' '}
 											{/* commentout when more then one companys you have */}
 										</TimelineSeparator>
 										<TimelineContent>
 											{item.companyName}
 											<br />
-											{item.role}
+											<span class="text-pink-200">{item.role}</span>
 											<br />
 											<span className='text-neutral-400'>{item.date}</span>
 										</TimelineContent>
