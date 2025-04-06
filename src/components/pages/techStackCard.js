@@ -44,7 +44,7 @@ export default function TechStackCard() {
 		{
 			LogoURL:
 				'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg',
-			name: 'Boostrap',
+			name: 'Bootstrap',
 		},
 		{
 			LogoURL:
@@ -81,14 +81,25 @@ export default function TechStackCard() {
 			{techStackData &&
 				techStackData.map((item, index) => {
 					return (
-						<div class='div h-[6em] w-[7em] sm:w-[12rem] bg-white m-auto rounded-[1em] overflow-hidden relative group p-2 z-0'>
-							<div class='circle absolute h-[5em] w-[5em] -top-[2.5em] -right-[2.5em] rounded-full bg-[#FF5800] group-hover:scale-[800%] duration-500 z-[-1] op'></div>
-							<div class='flex gap-3 items-center h-full align-center z-20 font-bold font-Poppin group-hover:text-white duration-500 text-[1.4em]'>
-								<div class=''>
-									<img class='h-16 w-10 sm:w-full' src={item.LogoURL} />
+						<div className='flex flex-wrap gap-6 justify-center items-center' key={index}>
+							<label className='text-gray-400 cursor-pointer'>
+								<div className='group flex flex-col gap-4 w-28 sm:w-32 sm:h-32 bg-gradient-to-b from-gray-800 to-gray-900 rounded-2xl p-4 shadow-xl border-2 border-transparent transition-all duration-300 ease-in-out hover:border-indigo-500 hover:shadow-indigo-500/20 peer-checked:border-indigo-500 peer-checked:from-indigo-900/50 peer-checked:to-gray-900 peer-checked:translate-y-[-0.5rem]'>
+									<div className='relative'>
+										<div className='w-12 h-12 mx-auto bg-indigo-500/20 rounded-lg border-2 border-indigo-500/40 group-hover:border-indigo-400 group-hover:bg-indigo-500/30 peer-checked:border-indigo-400 peer-checked:bg-indigo-500/30 transition-all duration-300'>
+											<div className='flex flex-col gap-1 p-2'>
+												<img className='w-10 sm:w-full' src={item.LogoURL} />
+											</div>
+										</div> 
+									</div>
+
+									<div className='text-center'>
+										<p className='font-medium text-sm group-hover:text-indigo-400 peer-checked:text-indigo-400 transition-colors duration-300'>
+											{item.name}
+										</p>
+									<div className='h-1 w-0 bg-indigo-500 rounded-full mx-auto group-hover:w-6/12 peer-checked:w-full transition-all duration-300'></div>
+									</div>
 								</div>
-								<h2 class='sm:text-3xl text-sm text-black sm:text-white'>{item.name}</h2>
-							</div>
+							</label>
 						</div>
 					)
 				})}
@@ -96,18 +107,3 @@ export default function TechStackCard() {
 	)
 }
 
-/*  previous tech skills card code that show water waves ----
-<div className='card' key={index}>
-	<div className='wave'></div>
-	<div className='wave'></div>
-	<div className='wave'></div>
-	<div className='content'>
-		<div>
-			<img src={item.LogoURL} alt='logo' className='languages-card-img' />
-		</div>
-		<span className='text-stone-300 hover:text-lime-300 text-sm md:text-xl lg:text-xl font-bold'>
-			{item.name}
-		</span>
-	</div>
-</div>
-*/

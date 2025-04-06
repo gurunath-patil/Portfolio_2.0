@@ -1,6 +1,6 @@
 #nav-bar-container{
     /* border: 1px solid; */
-    background-color: hsl(240, 2%, 37%);
+    /* background-color: hsl(240, 2%, 37%); */
     display: flex;
     justify-content: space-around;
     width: 42%;

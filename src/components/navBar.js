@@ -36,7 +36,7 @@ export default function NavBar(){
     },[location.pathname])
 
     return(
-        <div ref={linkContainer} id="nav-bar-container" className="rounded-bl-xl rounded-br-xl md:rounded-br-none">
+        <div ref={linkContainer} id="nav-bar-container" className="rounded-bl-xl rounded-br-xl md:rounded-br-none bg-[#27391C]">
             <Link to="about" className="text-lg text-white hover:text-yellow-400 hover:font-semibold">About</Link>
             <Link to="resume" className="text-lg text-white hover:text-yellow-400 hover:font-semibold">Resume</Link>
             <Link to="portfolio" className="text-lg text-white hover:text-yellow-400 hover:font-semibold">Portfolio</Link>

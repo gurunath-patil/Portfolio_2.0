@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './pages-style.css'
 import TitleBar from '../title-txt'
 import { Button, Card, CardContent, CardMedia, Divider, Skeleton, Typography } from '@mui/material'
+import { PortfolioCardSkeleton } from '../customSkeleton'
 
 export default function PortfolioPage() {
 	const projectDetails = [
@@ -9,13 +10,13 @@ export default function PortfolioPage() {
 			projectName: 'Nandan Dairy ERP',
 			imgURL: 'https://www.baramatidoodhsangh.com/new/Home%20Page%20Display-1.webp',
 			status: false,
-			sourceURL: '',
+			sourceURL: null,
 		},
 		{
 			projectName: 'Bways ERP',
 			imgURL: 'https://compservtech.com/site/assets/files/1425/bways_erp_logo.png',
 			status: false,
-			sourceURL: '',
+			sourceURL: null,
 		},
 		{
 			projectName: 'Bloging Website',
@@ -50,9 +51,9 @@ export default function PortfolioPage() {
 		return (
 			<section className='px-10 py-7 text-white'>
 				<TitleBar titleTxt={'Portfolio'} />
-				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 mt-10'>
+				<div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 gap-x-5 mt-10'>
 					{projectDetails.map((item, index) => {
-						return <Skeleton sx={{backgroundColor:'#1E3E62'}} animation='wave' variant='rounded' width={280} height={250} />
+						return <PortfolioCardSkeleton key={index}/>
 					})}
 				</div>
 			</section>
@@ -75,7 +76,7 @@ function ProjectCard(prop) {
 	const { projectName, imgURL, status, sourceURL } = prop.data
 	return (
 		<Card sx={{ maxWidth: 280 }}>
-			<CardMedia sx={{ height: 126 }} image={imgURL} title='nandai dairy' component='img' />
+			<CardMedia sx={{ height: 126 }} image={imgURL} title={projectName} component='img' />
 			<CardContent
 				sx={{
 					display: 'flex',
