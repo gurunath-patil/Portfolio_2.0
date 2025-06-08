@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import TitleBar from '../title-txt'
 import { Alert, CircularProgress, LinearProgress, Snackbar } from '@mui/material'
+import PetAnimationLoader from '../PetAnimationLoader'
+
 export default function ContactPage() {
 	const [formData, setFromData] = useState({
 		name: '',
@@ -16,16 +18,16 @@ export default function ContactPage() {
 	useEffect(() => {
 		setTimeout(() => {
 			setMapStatus(true)
-		}, 3000)
+		}, 5000)
 	}, [])
 
-	useEffect(()=>{
+	useEffect(() => {
 		setTimeout(() => {
-			if(userMsgStatus == true){
+			if (userMsgStatus == true) {
 				setUserMSgStatus(false)
 			}
 		}, 4000)
-	},[userMsgStatus])
+	}, [userMsgStatus])
 
 	function formatDate() {
 		const date = new Date()
@@ -87,22 +89,36 @@ export default function ContactPage() {
 
 	return (
 		<section className='px-10 py-7 text-white'>
-			{userMsgStatus && userMsgStatus == true ? <Alert className='border border-red-400 absolute left-0 top-0 w-11/12 sm:w-3/12 sm:left-auto ms-3 sm:ms-52'  severity="warning">Please Fill Up Required Data!</Alert> : ''} 
+			{userMsgStatus && userMsgStatus == true ? (
+				<Alert
+					className='border border-red-400 absolute left-0 top-0 w-11/12 sm:w-3/12 sm:left-auto ms-3 sm:ms-52'
+					severity='warning'>
+					Please Fill Up Required Data!
+				</Alert>
+			) : (
+				''
+			)}
 
 			<TitleBar titleTxt={'Contact'} />
 			<div className='mt-4 rounded-lg overflow-hidden'>
-				{mapStatus != true ? <LinearProgress color='secondary' /> : ''}
-				<iframe
-					src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122283.79400671698!2d74.15646588457899!3d16.70845223339603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1000cdec07a29%3A0xece8ea642952e42f!2sKolhapur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1732965493452!5m2!1sen!2sin'
-					width='600'
-					height='270'
-					style={{ border: '0' }}
-					allowFullScreen={true}
-					loading='lazy'
-					referrerPolicy='no-referrer-when-downgrade'
-					className={`w-full ${mapStatus == false ? 'invisible' : 'visible'}`}
-				/>
+				{/* {mapStatus != true ? <LinearProgress color='secondary' /> : ''} */}
+				{/* {mapStatus != true ?  : ''} */}
+				{mapStatus == false ? (
+					<PetAnimationLoader />
+				) : (
+					<iframe
+						src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d122283.79400671698!2d74.15646588457899!3d16.70845223339603!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc1000cdec07a29%3A0xece8ea642952e42f!2sKolhapur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1732965493452!5m2!1sen!2sin'
+						width='600'
+						height='247'
+						style={{ border: '0' }}
+						allowFullScreen={true}
+						loading='lazy'
+						referrerPolicy='no-referrer-when-downgrade'
+						className={`w-full display-${mapStatus == false ? 'hidden' : 'block'}`}
+					/>
+				)}
 			</div>
+			<div></div>
 			<div className='mt-10 flex flex-col'>
 				<h2 className='text-3xl font-semibold'>Contact Form</h2>
 				<form className='max-w-full grid grid-cols-2 mt-3 p-3'>
@@ -159,8 +175,9 @@ export default function ContactPage() {
 					{dataUploadeStatus == true ? (
 						<CircularProgress size='20px' />
 					) : (
-						<button className='relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group'
-						onClick={handleSubmit}>
+						<button
+							className='relative flex items-center px-6 py-3 overflow-hidden font-medium transition-all bg-indigo-500 rounded-md group'
+							onClick={handleSubmit}>
 							<span className='absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-indigo-700 rounded group-hover:-mr-4 group-hover:-mt-4'>
 								<span className='absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white'></span>
 							</span>
@@ -179,7 +196,6 @@ export default function ContactPage() {
 				open={serverResStatus}
 				message={serverMsg}
 				anchorOrigin={{ vertical: 'top', horizontal: 'center' }}></Snackbar>
-
 		</section>
 	)
 }

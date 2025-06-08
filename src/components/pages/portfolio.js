@@ -19,6 +19,13 @@ export default function PortfolioPage() {
 			sourceURL: null,
 		},
 		{
+			projectName: 'YCanary',
+			sourceURL: 'https://ycanary.com/',
+			status: true,
+			imgURL:
+				'https://ycanary.com/assets/dashboard-DJ73f9T0.jpg',
+		},
+		{
 			projectName: 'Bloging Website',
 			sourceURL: 'https://github.com/gurunath-patil/blog-website',
 			status: true,
@@ -31,14 +38,7 @@ export default function PortfolioPage() {
 			status: true,
 			imgURL:
 				'https://images.pexels.com/photos/29034990/pexels-photo-29034990/free-photo-of-serene-mountain-view-above-sunrise-clouds.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-		},
-		{
-			projectName: 'QR Code Generater',
-			sourceURL: 'https://generate-qr-code-omega.vercel.app/',
-			status: true,
-			imgURL:
-				'https://images.pexels.com/photos/7289717/pexels-photo-7289717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-		},
+		}
 	]
 
 	const [timerFlag, setTimerFlag] = useState(true)
