@@ -22,19 +22,20 @@ export default function SideMenuConatiner() {
 		},
 	]
 	return (
-		<Box id='sideMenu-box'>
+		<Box className='bg-[#0b192c] rounded-lg md:grid md:grid-cols-[350px_80px_1fr] md:py-4 lg:flex lg:flex-col lg:gap-y-4 lg:w-4/12 xl:w-4/12'>
 			<PersonalDetails />
-			<div id='hr-box'>
-				<div className='border border-stone-400 sm:w-11/12'></div>
+			<div className='px-3 w-full lg:row-start-2 lg:row-end-3 lg:px-6'>
+				<div className='md:h-64 lg:h-0 lg:w-full md:w-px h-0 w-full border border-stone-400 sm:w-11/12 mb-2 sm:mb-0'></div>
 			</div>
-			<ContactDetails />
+			<div className='max-h-full lg:row-start-3 lg:row-end-4 xl:flex xl:justify-center'>
+				<ContactDetails className='md:col-start-2' />
+			</div>
 
-			<div
-				className='w-full flex justify-around md:justify-center md:gap-x-16 md:items-end lg:justify-center flex-wrap lg:gap-x-7 lg:py-3'
-				id='social-media-container'>
-				{logoDetails &&
-					logoDetails.map((item, index) => {
-						return (
+			<div className='lg:row-start-4 md:w-[45rem] lg:w-full'>
+				<div className='w-full flex justify-around md:justify-center md:gap-x-16 md:items-end lg:justify-center flex-wrap lg:gap-x-7 lg:py-3 py-4 sm:pb-0'>
+					{logoDetails &&
+						logoDetails.map((item, index) => {
+							return (
 								<a href={item.accountURL} target='_blank' key={index}>
 									<button className='group flex justify-center p-2 rounded-md drop-shadow-xl from-gray-800 bg-[#3E3F5B] text-white font-semibold hover:translate-y-2 transition-all duration-250 hover:from-[#331029] hover:to-[#310413]'>
 										<img
@@ -53,10 +54,10 @@ export default function SideMenuConatiner() {
 										</span>
 									</button>
 								</a>
-						)
-					})}
+							)
+						})}
+				</div>
 			</div>
 		</Box>
 	)
 }
-

@@ -5,19 +5,19 @@ import './styles.css'
 
 export default function PersonalDetails() {
 	return (
-		<Box id='presonal-details-box'>
+		<Box  className="min-w-24 flex flex-col justify-between py-4 md:h-56 h-44">
 			<div className='flex justify-center items-center flex-wrap'>
 				<div
-					className='sm:w-max w-7/12 overflow-hidden rounded-3xl flex justify-center items-center'
+					className='sm:w-max md:w-7/12 overflow-hidden rounded-3xl flex justify-center items-center'
 					id='profile-box'>
 					<section className='flex justify-center items-center w-full h-6/12 shadow-md bg-gradient-to-r from-[#F9C97C] to-[#A2E9C1] hover:from-[#C9A9E9] hover:to-[#7EE7FC] hover:cursor-pointer hover:scale-110 duration-300'>
-						<img src={myProfile} alt='profile emoji' className='sm:w-8/12 md:w-6/12 w-6/12' />
+						<img src={myProfile} alt='profile emoji' className='sm:w-8/12 md:w-4/12 w-4/12 xl:w-5/12' />
 					</section>
 				</div>
 			</div>
 
 			<div className='lg:p-2 text-xl lg:text-3xl md:text-2xl font-semibold flex justify-center flex-wrap lg:items-center'>
-				<h2 className='font-mono tracking-wide text-base sm:text-3xl'>Gurunath Patil</h2>
+				<h2 className='font-mono tracking-wide text-small sm:text-3xl text-white'>Gurunath Patil</h2>
 			</div>
 
 			<div className='flex justify-center flex-wrap'>

@@ -104,7 +104,7 @@ export default function ResumePage() {
 										<TimelineContent>
 											{item.companyName}
 											<br />
-											<span className="text-pink-200">{item.role}</span>
+											<span className="text-[#96A78D]">{item.role}</span>
 											<br />
 											<span className='text-neutral-400'>{item.date}</span>
 										</TimelineContent>
